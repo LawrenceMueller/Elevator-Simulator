@@ -5,7 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Elevator Simulation</title>
         <link type="text/css" rel="stylesheet" href="./CSS/normalize.css" />
-        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+        <link
+            href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+            rel="stylesheet"
+        />
         <link rel="stylesheet" href="./CSS/index.css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     </head>
@@ -17,12 +20,48 @@
         <div id="instructions">
             <h2>Instructions</h2>
             <ul>
-                <li>Click on a floor button to add one person to the elevator queue for that floor</li>
-                <li>If the floor you click is floor 1, the passenger will go to a random floor</li>
-                <li>If you select floors 2 - 4, then the passenger that you queued will go to floor one</li>
+                <li>
+                    Click on a floor button to add one person to the elevator
+                    queue for that floor
+                </li>
+                <li>
+                    If the floor you click is floor 1, the passenger will go to
+                    a random floor
+                </li>
+                <li>
+                    If you select floors 2 - 4, then the passenger that you
+                    queued will go to floor one
+                </li>
             </ul>
         </div>
-            
+        <div class="main-content">
+            <div class="elevator-visual">
+                <div class="floor">
+                    <p id="floor-four-lable" class="floor-title">Floor 4</p>
+                    <hr class="floor-bound" />
+                </div>
+                <div class="floor">
+                    <p class="floor-title">Floor 3</p>
+                    <hr class="floor-bound" />
+                </div>
+                <div class="floor">
+                    <p class="floor-title">Floor 2</p>
+                    <hr id="first-floor" class="floor-bound" />
+                </div>
+                <img class="elevator" src="./img/elevator2.PNG" alt="" />
+                <div class="floor">
+                    <p class="floor-title">Floor 1</p>
+                    <hr id="first-floor" class="floor-bound" />
+                </div>
+            </div>
+            <div class="queue">
+                <h2 class="queue-title">Queue</h2>
+                <div class="queue-list">
+                    
+                </div>
+            </div>
+        </div>
+
         <script src="index.js"></script>
     </body>
 </html>

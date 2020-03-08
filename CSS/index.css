@@ -1,16 +1,17 @@
+/* General Styles */
 body,
 html {
     height: 100%;
 }
 
 body {
-    overflow: hidden; /* Hide scrollbars */
     margin: 0;
     font-family: 'Roboto', sans-serif;
     box-sizing: border-box;
     background-color: #ffffff;
 }
 
+/* Header Styles */
 header {
     background-color: #ec4590;
     height: 30%;
@@ -34,16 +35,6 @@ header {
     transition: font-size 3s;
 }
 
-h2 {
-    color: #e61875;
-    margin: 0;
-    padding: 0;
-    font-size: 3.5rem;
-    font-weight: 300;
-    margin-left: 5%;
-    margin-top: 10%;
-}
-
 .btn {
     position: absolute;
     top: 92%;
@@ -57,26 +48,6 @@ h2 {
     font-size: 24px;
     background-color: #f9b24f;
     color: white;
-}
-
-ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    margin-top: 10px;
-    margin-left: 5.7%;
-}
-
-li {
-    text-indent: -0.7em;
-    margin-bottom: 5px;
-    color: #777;
-}
-
-li::before {
-    content: '• ';
-    font-size: 20px;
-    color: #e61875; /* or whatever color you prefer */
 }
 
 .active-header {
@@ -114,6 +85,99 @@ li::before {
     color: white;
 }
 
+/* Instructions Styles */
+
+h2 {
+    color: #e61875;
+    margin: 0;
+    padding: 0;
+    font-size: 3.5rem;
+    font-weight: 300;
+    margin-left: 5%;
+    margin-top: 10%;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-top: 10px;
+    margin-left: 5.7%;
+}
+
+li {
+    text-indent: -0.7em;
+    margin-bottom: 5px;
+    color: #777;
+}
+
+li::before {
+    content: '• ';
+    font-size: 20px;
+    color: #e61875;
+}
+
 .instructions-active {
-  display: none;
+    display: none;
+}
+
+/* Main Content Styles */
+.main-content {
+    display: none;
+}
+
+.main-content-active {
+    display: table;
+    clear: both;
+    width: 100%;
+}
+
+/* Elevator Visual Styles */
+.elevator-visual {
+    float: left;
+    width: 55%;
+}
+
+.elevator {
+    max-width: 10vw;
+    margin-left: 6vw;
+}
+
+.floor-bound {
+    width: 75%;
+    margin-bottom: 15vw;
+}
+
+#first-floor {
+    margin-bottom: 0;
+}
+
+.floor-title {
+    margin: 0;
+    padding: 0;
+    text-align: right;
+    color: #777;
+    margin-right: 6vw;
+}
+
+#floor-four-lable {
+    margin-top: 15vw;
+}
+
+/* Queue Styles */
+.queue {
+    float: left;
+    width: 44%;
+    margin-top: 7vw;
+}
+
+.queue-title {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.queue-list{
+  border-style: solid;
+  border-width: 1px;
+  height: 70vw;
 }
