@@ -13,10 +13,12 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     </head>
     <body>
+        <!-- Header area -->
         <header>
             <h1 class="title">Elevator Simulator</h1>
             <button class="btn">+</button>
         </header>
+        <!-- Main content area when button is not active -->
         <div id="instructions">
             <h2>Instructions</h2>
             <ul>
@@ -34,31 +36,58 @@
                 </li>
             </ul>
         </div>
+
+        <!-- Main content area while button is active -->
         <div class="main-content">
-            <div class="elevator-visual">
-                <div class="floor">
-                    <p id="floor-four-lable" class="floor-title">Floor 4</p>
-                    <hr class="floor-bound" />
+            
+            <div class="visuals">
+                <!-- Elevator Diagram -->
+                <div class="elevator-visual">
+                    <div class="floor">
+                        <p id="floor-four-lable" class="floor-title">Floor 4</p>
+                        <hr class="floor-bound" />
+                    </div>
+                    <div class="floor">
+                        <p class="floor-title">Floor 3</p>
+                        <hr class="floor-bound" />
+                    </div>
+                    <div class="floor">
+                        <p class="floor-title">Floor 2</p>
+                        <hr id="first-floor" class="floor-bound" />
+                    </div>
+                    <img class="elevator" src="./img/elevator2.PNG" alt="" />
+                    <div class="floor">
+                        <p class="floor-title">Floor 1</p>
+                        <hr id="first-floor" class="floor-bound" />
+                    </div>
                 </div>
-                <div class="floor">
-                    <p class="floor-title">Floor 3</p>
-                    <hr class="floor-bound" />
-                </div>
-                <div class="floor">
-                    <p class="floor-title">Floor 2</p>
-                    <hr id="first-floor" class="floor-bound" />
-                </div>
-                <img class="elevator" src="./img/elevator2.PNG" alt="" />
-                <div class="floor">
-                    <p class="floor-title">Floor 1</p>
-                    <hr id="first-floor" class="floor-bound" />
+
+                <!-- Queue Diagram -->
+                <div class="queue">
+                    <h2 class="queue-title">Queue</h2>
+                    <div class="queue-list">
+                        <p class="queue-list-item">
+                            Floor: 3 - Riders: 2
+                        </p>
+                        <p class="queue-list-item">
+                            Floor: 3 - Riders: 2
+                        </p>
+                        <p class="queue-list-item">
+                            Floor: 3 - Riders: 2
+                        </p>
+                        <p class="queue-list-item">
+                            Floor: 3 - Riders: 2
+                        </p>
+                    </div>
                 </div>
             </div>
-            <div class="queue">
-                <h2 class="queue-title">Queue</h2>
-                <div class="queue-list">
-                    
-                </div>
+
+            <!-- Buttons for Elevator -->
+            <div class="button-panel">
+                <button class="btn e-btn">1</button>
+                <button class="btn e-btn">2</button>
+                <button class="btn e-btn">3</button>
+                <button class="btn e-btn">4</button>
             </div>
         </div>
 

@@ -127,14 +127,18 @@ li::before {
 }
 
 .main-content-active {
-    display: table;
-    clear: both;
+    display: block;
     width: 100%;
+}
+
+.visuals{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
 }
 
 /* Elevator Visual Styles */
 .elevator-visual {
-    float: left;
     width: 55%;
 }
 
@@ -166,7 +170,6 @@ li::before {
 
 /* Queue Styles */
 .queue {
-    float: left;
     width: 44%;
     margin-top: 7vw;
 }
@@ -174,10 +177,40 @@ li::before {
 .queue-title {
     font-size: 2rem;
     text-align: center;
+    margin: 0;
+    margin-top: 5vw;
 }
 
-.queue-list{
-  border-style: solid;
-  border-width: 1px;
-  height: 70vw;
+.queue-list {
+    border-style: solid;
+    border-width: 1px;
+    height: 70vw;
+    text-align: center;
+}
+
+.queue-list-item {
+    margin: 5px 0;
+    padding: 0;
+    color: #777;
+    margin-right: 6vw;
+}
+
+/* Pannel buttons Styles */
+.button-panel {
+    width: 100%;
+    text-align: center;
+    margin-top: 5vw;
+}
+
+.button-panel .e-btn {
+    position: static;
+    border: none;
+    padding: 8px 19.5px;
+    vertical-align: middle;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 24px;
+    background-color: #f9b24f;
+    color: white;
 }
