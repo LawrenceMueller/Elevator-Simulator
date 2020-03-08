@@ -9,6 +9,7 @@ body {
     font-family: 'Roboto', sans-serif;
     box-sizing: border-box;
     background-color: #ffffff;
+    overflow: hidden; /* Hide scrollbars */
 }
 
 /* Header Styles */
@@ -131,10 +132,10 @@ li::before {
     width: 100%;
 }
 
-.visuals{
-  width: 100%;
-  display: flex;
-  flex-direction: row;
+.visuals {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
 }
 
 /* Elevator Visual Styles */
@@ -200,6 +201,7 @@ li::before {
     width: 100%;
     text-align: center;
     margin-top: 5vw;
+    margin-bottom: 50px;
 }
 
 .button-panel .e-btn {
@@ -213,4 +215,119 @@ li::before {
     font-size: 24px;
     background-color: #f9b24f;
     color: white;
+}
+
+/* Media Queries */
+@media only screen and (max-width: 359px) {
+    .active-title {
+        position: absolute;
+        top: 35%;
+        left: 5%;
+        color: white;
+        margin: 0;
+        padding: 0;
+        font-size: 2rem;
+        font-weight: 300;
+        text-align: left;
+        transition: font-size 3s;
+    }
+
+    .visuals {
+        margin-top: 5vw;
+    }
+
+    .queue-list {
+        height: 72vw;
+    }
+
+    .queue-list-item {
+        margin: 5px 0;
+        padding: 0;
+        color: #777;
+        margin-right: 6vw;
+        font-size: 0.8rem;
+    }
+}
+
+@media only screen and (min-width: 500px) {
+    .queue-list {
+        text-align: left;
+    }
+
+    .queue-list {
+        height: 65vw;
+    }
+
+    .queue-list-item {
+        margin-left: 2vw;
+        font-size: 1.3rem;
+    }
+}
+
+@media only screen and (min-width: 800px) {
+    .elevator-visual {
+        width: 50%;
+    }
+
+    .elevator {
+        max-width: 7vw;
+    }
+
+    .floor-bound {
+        margin-bottom: 10vw;
+    }
+
+    #floor-four-lable {
+        margin-top: 10vw;
+    }
+
+    /* Queue Styles */
+    .queue {
+        width: 35%;
+        margin-top: 3.5vw;
+    }
+
+    .queue-list {
+        height: 43vw;
+    }
+
+    .queue-list-item {
+        margin: 10px 0;
+        margin-left: 2vw;
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+
+  .elevator-visual {
+      width: 40%;
+      margin-left: 8vw;
+  }
+
+  .elevator {
+      max-width: 6vw;
+  }
+
+  .floor-bound {
+      margin-bottom: 7vw;
+  }
+
+  #floor-four-lable {
+      margin-top: 6vw;
+  }
+
+  /* Queue Styles */
+  .queue {
+      margin-top: .3vw;
+  }
+
+  .queue-list {
+      height: 28.5vw;
+  }
+
+  .queue-list-item {
+      margin: 10px 0;
+      margin-left: 2vw;
+      font-size: 1.7rem;
+  }
 }
