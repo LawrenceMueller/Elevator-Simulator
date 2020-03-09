@@ -146,6 +146,7 @@ li::before {
 .elevator {
     max-width: 10vw;
     margin-left: 6vw;
+    margin-top: 25px;
 }
 
 .floor-bound {
@@ -266,8 +267,12 @@ li::before {
 
 /* Media Queries */
 @media only screen and (max-width: 359px) {
+    .title {
+        top: 25%;
+    }
+
     .active-title {
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
 
     .visuals {
@@ -275,7 +280,7 @@ li::before {
     }
 
     .queue-list {
-        height: 72vw;
+        height: 77vw;
     }
 
     .queue-list-item {

@@ -6,6 +6,7 @@ $(document).ready(function() {
     const instructions = document.getElementById('instructions');
     const mainContent = document.querySelector('.main-content');
     const elevator = document.querySelector('.elevator');
+    const queue_list = document.querySelector(".queue-list");
 
     let riders_f1_f2 = 0; // Represents all riders waiting for the elevator at floor 1 going to floor 2
     let riders_f1_f3 = 0;
@@ -156,6 +157,12 @@ $(document).ready(function() {
         // Disable Start button
         startBtn.classList.toggle("btn-reset");
         startBtn.classList.remove("btn-start");
+
+        // Dequeue top item
+        let first_in_queue_information = queue_list.firstElementChild;
+        let first_in_queue_information_tokens = first_in_queue_information.innerHTML.split("-");
+        elevator_destination = first_in_queue_information_tokens[1].substring(7,9);
+        console.log(elevator_destination);
     });
 
     // Called when user selects the Reset button
@@ -174,11 +181,9 @@ $(document).ready(function() {
         startBtn.classList.remove("btn-reset");
 
         // Clear the queue
-        let queue_list = document.querySelector(".queue-list").children;
-        console.log("Type of queue_list: " + queue_list.typeOf + "    " + queue_list);
-        for (let i = 0; i < queue_list.length - 1; i++) {
-            let child = queue_list[i];
-            child.remove();
-          }
+        queue_list.querySelectorAll(".queue-list-item").forEach(event => event.remove());
+
+        //Reset Elevator to bottom floor
+        //TODO
     });
 });
