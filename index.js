@@ -1,18 +1,23 @@
 $(document).ready(function() {
-    // Create an Immediately-invoked function expression
 
     const button_menu = document.querySelector('.btn');
     const title = document.querySelector('.title');
     const header = document.querySelector('header');
     const instructions = document.getElementById('instructions');
     const mainContent = document.querySelector('.main-content');
+    const elevator = document.querySelector('.elevator');
 
     let riders_f1_f2 = 0; // Represents all riders waiting for the elevator at floor 1 going to floor 2
-    let riders_f1_f3 = 0; // Represents all riders waiting for the elevator at floor 1 going to floor 3
-    let riders_f1_f4 = 0; // Represents all riders waiting for the elevator at floor 1 going to floor 4
-    let riders_f2 = 0; // Represents all riders waiting for the elevator at floor 2
-    let riders_f3 = 0; // Represents all riders waiting for the elevator at floor 3
-    let riders_f4 = 0; // Represents all riders waiting for the elevator at floor 4
+    let riders_f1_f3 = 0;
+    let riders_f1_f4 = 0;
+    let riders_f2_f1 = 0; // Represents all riders waiting for the elevator at floor 2 going to floor 1
+    let riders_f3_f1 = 0;
+    let riders_f4_f1 = 0;
+
+    let startBtn = document.getElementById("btn-start");
+    let resetBtn = document.getElementById("btn-reset");
+
+    const floor_btns = document.querySelectorAll(".e-btn");
 
     // Called when user selects the Menu change button
     $('.btn').click(function() {
@@ -38,46 +43,46 @@ $(document).ready(function() {
         switch (floor_destination) {
             case 2:
                 riders_f1_f2 = riders_f1_f2 + 1; // Update riders waiting at floor 1 with the newest rider
-                let f2_inQueue = document.getElementById('f1_f2_queue'); // Grab the item in queue that fits our situation
+                let f1_f2_inQueue = document.getElementById('f1_f2_inQueue'); // Grab the item in queue that fits our situation
 
                 // Check if the situation is already in queue
-                if (f2_inQueue) {
+                if (f1_f2_inQueue) {
                     // If we already have item in queue simply update the item with updated riders
-                    f2_inQueue.innerHTML = `From: F1 - Dest: F2 - Riders: ${riders_f1_f2}`;
+                    f1_f2_inQueue.innerHTML = `From: F1 - Dest: F2 - Riders: ${riders_f1_f2}`;
                 } else {
                     // If situation is not in queue, add it to queue
                     $('.queue-list').append(
-                        `<p id="f1_f2_queue" class="queue-list-item">From: F1 - Dest: F2 - Riders: ${riders_f1_f2} </p>`
+                        `<p id="f1_f2_inQueue" class="queue-list-item">From: F1 - Dest: F2 - Riders: ${riders_f1_f2} </p>`
                     );
                 }
                 break;
             case 3:
                 riders_f1_f3 = riders_f1_f3 + 1; // Update riders waiting at floor 1 with the newest rider
-                let f3_inQueue = document.getElementById('f1_f3_queue'); // Grab the item in queue that fits our situation
+                let f1_f3_inQueue = document.getElementById('f1_f3_inQueue'); // Grab the item in queue that fits our situation
 
                 // Check if the situation is already in queue
-                if (f3_inQueue) {
+                if (f1_f3_inQueue) {
                     // If we already have item in queue simply update the item with updated riders
-                    f3_inQueue.innerHTML = `From: F1 - Dest: F3 - Riders: ${riders_f1_f3}`;
+                    f1_f3_inQueue.innerHTML = `From: F1 - Dest: F3 - Riders: ${riders_f1_f3}`;
                 } else {
                     // If situation is not in queue, add it to queue
                     $('.queue-list').append(
-                        `<p id="f1_f3_queue" class="queue-list-item">From: F1 - Dest: F3 - Riders: ${riders_f1_f3} </p>`
+                        `<p id="f1_f3_inQueue" class="queue-list-item">From: F1 - Dest: F3 - Riders: ${riders_f1_f3} </p>`
                     );
                 }
                 break;
             case 4:
                 riders_f1_f4 = riders_f1_f4 + 1; // Update riders waiting at floor 1 with the newest rider
-                let f4_inQueue = document.getElementById('f1_f4_queue'); // Grab the item in queue that fits our situation
+                let f1_f4_inQueue = document.getElementById('f1_f4_inQueue'); // Grab the item in queue that fits our situation
 
                 // Check if the situation is already in queue
-                if (f4_inQueue) {
+                if (f1_f4_inQueue) {
                     // If we already have item in queue simply update the item with updated riders
-                    f4_inQueue.innerHTML = `From: F1 - Dest: F4 - Riders: ${riders_f1_f4}`;
+                    f1_f4_inQueue.innerHTML = `From: F1 - Dest: F4 - Riders: ${riders_f1_f4}`;
                 } else {
                     // If situation is not in queue, add it to queue
                     $('.queue-list').append(
-                        `<p id="f1_f4_queue" class="queue-list-item">From: F1 - Dest: F4 - Riders: ${riders_f1_f4} </p>`
+                        `<p id="f1_f4_inQueue" class="queue-list-item">From: F1 - Dest: F4 - Riders: ${riders_f1_f4} </p>`
                     );
                 }
                 break;
@@ -88,16 +93,92 @@ $(document).ready(function() {
 
     // Called when user selects the Floor 2 button
     $('#btn-f2').click(function() {
-        console.log('f2');
+        riders_f2_f1 = riders_f2_f1 + 1; // Update riders waiting at floor 2 with the newest rider
+        let f2_f1_inQueue = document.getElementById('f2_f1_inQueue'); // Grab the item in queue that fits our situation
+
+        // Check if the situation is already in queue
+        if (f2_f1_inQueue) {
+            // If we already have item in queue simply update the item with updated riders
+            f2_f1_inQueue.innerHTML = `From: F2 - Dest: F1 - Riders: ${riders_f2_f1}`;
+        } else {
+            // If situation is not in queue, add it to queue
+            $('.queue-list').append(
+                `<p id="f2_f1_inQueue" class="queue-list-item">From: F2 - Dest: F1 - Riders: ${riders_f2_f1} </p>`
+            );
+        }
     });
 
     // Called when user selects the Floor 3 button
     $('#btn-f3').click(function() {
-        console.log('f3');
+        riders_f3_f1 = riders_f3_f1 + 1; // Update riders waiting at floor 3 with the newest rider
+        let f3_f1_inQueue = document.getElementById('f3_f1_inQueue'); // Grab the item in queue that fits our situation
+
+        // Check if the situation is already in queue
+        if (f3_f1_inQueue) {
+            // If we already have item in queue simply update the item with updated riders
+            f3_f1_inQueue.innerHTML = `From: F3 - Dest: F1 - Riders: ${riders_f3_f1}`;
+        } else {
+            // If situation is not in queue, add it to queue
+            $('.queue-list').append(
+                `<p id="f3_f1_inQueue" class="queue-list-item">From: F3 - Dest: F1 - Riders: ${riders_f3_f1} </p>`
+            );
+        }
     });
 
     // Called when user selects the Floor 4 button
     $('#btn-f4').click(function() {
-        console.log('f4');
+        riders_f4_f1 = riders_f4_f1 + 1; // Update riders waiting at floor 4 with the newest rider
+        let f4_f1_inQueue = document.getElementById('f4_f1_inQueue'); // Grab the item in queue that fits our situation
+
+        // Check if the situation is already in queue
+        if (f4_f1_inQueue) {
+            // If we already have item in queue simply update the item with updated riders
+            f4_f1_inQueue.innerHTML = `From: F4 - Dest: F1 - Riders: ${riders_f4_f1}`;
+        } else {
+            // If situation is not in queue, add it to queue
+            $('.queue-list').append(
+                `<p id="f4_f1_inQueue" class="queue-list-item">From: F4 - Dest: F1 - Riders: ${riders_f4_f1} </p>`
+            );
+        }
+    });
+
+    // Called when user selects the Start button
+    $('#btn-start').click(function() {
+        // Loop through floor buttons and disable them
+        floor_btns.forEach(btn => {
+            btn.classList.toggle("e-btn-simulate");
+        });
+
+        // Enable Reset button
+        resetBtn.classList.toggle("btn-start");
+        resetBtn.classList.remove("btn-reset");
+
+        // Disable Start button
+        startBtn.classList.toggle("btn-reset");
+        startBtn.classList.remove("btn-start");
+    });
+
+    // Called when user selects the Reset button
+    $('#btn-reset').click(function() {
+        // Loop through floor button and enable them
+        floor_btns.forEach(btn => {
+            btn.classList.remove("e-btn-simulate");
+        });
+
+        // Disable Reset button
+        resetBtn.classList.toggle("btn-reset");
+        resetBtn.classList.remove("btn-start");
+
+        // Enable Start button
+        startBtn.classList.toggle("btn-start");
+        startBtn.classList.remove("btn-reset");
+
+        // Clear the queue
+        let queue_list = document.querySelector(".queue-list").children;
+        console.log("Type of queue_list: " + queue_list.typeOf + "    " + queue_list);
+        for (let i = 0; i < queue_list.length - 1; i++) {
+            let child = queue_list[i];
+            child.remove();
+          }
     });
 });

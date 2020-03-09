@@ -206,7 +206,7 @@ li::before {
     margin-bottom: 50px;
 }
 
-.button-panel .e-btn {
+.e-btn {
     position: static;
     border: none;
     padding: 8px 19.5px;
@@ -217,6 +217,51 @@ li::before {
     font-size: 24px;
     background-color: #f9b24f;
     color: white;
+}
+
+.e-btn-simulate{
+    position: static;
+    border: none;
+    padding: 8px 19.5px;
+    vertical-align: middle;
+    text-align: center;
+    cursor: none;
+    pointer-events: none;
+    border-radius: 50%;
+    font-size: 24px;
+    background-color: #777;
+    color: white;
+}
+
+.btn-start{
+    position: static;
+    border: none;
+    padding: 8px 21px;
+    vertical-align: middle;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 5%;
+    font-size: 24px;
+    background-color: #b77110;
+    color: white;
+    margin-left: 15px;
+    margin-top: 10px;
+}
+
+.btn-reset{
+    position: static;
+    border: none;
+    padding: 8px 21px;
+    vertical-align: middle;
+    text-align: center;
+    cursor: none;
+    pointer-events: none;
+    border-radius: 5%;
+    font-size: 24px;
+    background-color: #777;
+    color: white;
+    margin-top: 10px;
+    margin-left: 15px;
 }
 
 /* Media Queries */
