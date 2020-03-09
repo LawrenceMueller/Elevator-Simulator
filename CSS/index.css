@@ -144,9 +144,17 @@ li::before {
 }
 
 .elevator {
+    position: relative; /* Strictly for animation purposes */
     max-width: 10vw;
     margin-left: 6vw;
     margin-top: 25px;
+}
+
+.elevator-destination{
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    margin-left: 20vw;
 }
 
 .floor-bound {
@@ -154,7 +162,7 @@ li::before {
     margin-bottom: 15vw;
 }
 
-#first-floor {
+#first-floor, #second-floor{
     margin-bottom: 0;
 }
 
@@ -197,6 +205,15 @@ li::before {
     margin-right: 1vw;
     margin-left: 1vw;
     font-size: .65rem;
+}
+
+/* Following 2 classes used to update queue-list-items in order to provide better user experience */
+.in-progress {
+    color: #f9b24f;
+}
+
+.complete {
+    color: #47ca40;
 }
 
 /* Pannel buttons Styles */

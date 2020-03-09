@@ -5,7 +5,6 @@ $(document).ready(function() {
     const header = document.querySelector('header');
     const instructions = document.getElementById('instructions');
     const mainContent = document.querySelector('.main-content');
-    const elevator = document.querySelector('.elevator');
     const queue_list = document.querySelector(".queue-list");
 
     let riders_f1_f2 = 0; // Represents all riders waiting for the elevator at floor 1 going to floor 2
@@ -158,11 +157,24 @@ $(document).ready(function() {
         startBtn.classList.toggle("btn-reset");
         startBtn.classList.remove("btn-start");
 
-        // Dequeue top item
-        let first_in_queue_information = queue_list.firstElementChild;
-        let first_in_queue_information_tokens = first_in_queue_information.innerHTML.split("-");
-        elevator_destination = first_in_queue_information_tokens[1].substring(7,9);
-        console.log(elevator_destination);
+        // Start the Simulation
+        //queue_list.querySelectorAll(".queue-list-item").forEach(event => {
+            let first_in_queue = queue_list.firstElementChild;  // Grab first event in queue
+            first_in_queue.classList.toggle("in-progress"); // Update UI to show user that the event is in progress
+
+            let first_in_queue_information = first_in_queue.innerHTML.split("-");   // Parse for needed information
+            elevator_destination = first_in_queue_information[1].substring(7,9);    // Grab the events destination floor
+
+            // switch(elevator_destination){
+            //     case 1:
+
+            // }
+            var destination = $('#elevator-destination-f2').offset();
+            $("#elevator").offset(destination);
+            //$("#elevator").animate( {right: temp.left, bottom: temp.top}, 4000, "linear", function(){console.log("Elevator finished moving")} );
+
+
+        //});
     });
 
     // Called when user selects the Reset button
