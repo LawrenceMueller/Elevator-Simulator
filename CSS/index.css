@@ -193,7 +193,9 @@ li::before {
     margin: 5px 0;
     padding: 0;
     color: #777;
-    margin-right: 6vw;
+    margin-right: 1vw;
+    margin-left: 1vw;
+    font-size: .65rem;
 }
 
 /* Pannel buttons Styles */
@@ -220,16 +222,7 @@ li::before {
 /* Media Queries */
 @media only screen and (max-width: 359px) {
     .active-title {
-        position: absolute;
-        top: 35%;
-        left: 5%;
-        color: white;
-        margin: 0;
-        padding: 0;
         font-size: 2rem;
-        font-weight: 300;
-        text-align: left;
-        transition: font-size 3s;
     }
 
     .visuals {
@@ -241,11 +234,7 @@ li::before {
     }
 
     .queue-list-item {
-        margin: 5px 0;
-        padding: 0;
-        color: #777;
-        margin-right: 6vw;
-        font-size: 0.8rem;
+        font-size: 0.6rem;
     }
 }
 
@@ -259,8 +248,7 @@ li::before {
     }
 
     .queue-list-item {
-        margin-left: 2vw;
-        font-size: 1.3rem;
+        font-size: .95rem;
     }
 }
 
@@ -328,6 +316,6 @@ li::before {
   .queue-list-item {
       margin: 10px 0;
       margin-left: 2vw;
-      font-size: 1.7rem;
+      font-size: 1.4rem;
   }
 }
