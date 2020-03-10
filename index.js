@@ -164,18 +164,8 @@ $(document).ready(function() {
         let first_in_queue_information = first_in_queue.innerHTML.split('-'); // Parse for needed information
         elevator_destination = first_in_queue_information[1].substring(7, 9); // Grab the events destination floor
 
-        // switch(elevator_destination){
-        //     case 1:
-
-        // }
-        let destination = $('#second-floor').offset();
-        $('#elevator').animate(
-            {
-                destination
-            },
-            200
-        );
-        //$("#elevator").animate( {right: temp.left, bottom: temp.top}, 4000, "linear", function(){console.log("Elevator finished moving")} );
+        let destination = $('#forth-floor').offset();
+        $("#elevator").animate( {top: destination.top}, 4000, "linear", function(){console.log("Elevator finished moving")} );
 
         //});
     });
