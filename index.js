@@ -1,11 +1,10 @@
 $(document).ready(function() {
-
     const button_menu = document.querySelector('.btn');
     const title = document.querySelector('.title');
     const header = document.querySelector('header');
     const instructions = document.getElementById('instructions');
     const mainContent = document.querySelector('.main-content');
-    const queue_list = document.querySelector(".queue-list");
+    const queue_list = document.querySelector('.queue-list');
 
     let riders_f1_f2 = 0; // Represents all riders waiting for the elevator at floor 1 going to floor 2
     let riders_f1_f3 = 0;
@@ -14,10 +13,10 @@ $(document).ready(function() {
     let riders_f3_f1 = 0;
     let riders_f4_f1 = 0;
 
-    let startBtn = document.getElementById("btn-start");
-    let resetBtn = document.getElementById("btn-reset");
+    let startBtn = document.getElementById('btn-start');
+    let resetBtn = document.getElementById('btn-reset');
 
-    const floor_btns = document.querySelectorAll(".e-btn");
+    const floor_btns = document.querySelectorAll('.e-btn');
 
     // Called when user selects the Menu change button
     $('.btn').click(function() {
@@ -146,33 +145,37 @@ $(document).ready(function() {
     $('#btn-start').click(function() {
         // Loop through floor buttons and disable them
         floor_btns.forEach(btn => {
-            btn.classList.toggle("e-btn-simulate");
+            btn.classList.toggle('e-btn-simulate');
         });
 
         // Enable Reset button
-        resetBtn.classList.toggle("btn-start");
-        resetBtn.classList.remove("btn-reset");
+        resetBtn.classList.toggle('btn-start');
+        resetBtn.classList.remove('btn-reset');
 
         // Disable Start button
-        startBtn.classList.toggle("btn-reset");
-        startBtn.classList.remove("btn-start");
+        startBtn.classList.toggle('btn-reset');
+        startBtn.classList.remove('btn-start');
 
         // Start the Simulation
         //queue_list.querySelectorAll(".queue-list-item").forEach(event => {
-            let first_in_queue = queue_list.firstElementChild;  // Grab first event in queue
-            first_in_queue.classList.toggle("in-progress"); // Update UI to show user that the event is in progress
+        let first_in_queue = queue_list.firstElementChild; // Grab first event in queue
+        first_in_queue.classList.toggle('in-progress'); // Update UI to show user that the event is in progress
 
-            let first_in_queue_information = first_in_queue.innerHTML.split("-");   // Parse for needed information
-            elevator_destination = first_in_queue_information[1].substring(7,9);    // Grab the events destination floor
+        let first_in_queue_information = first_in_queue.innerHTML.split('-'); // Parse for needed information
+        elevator_destination = first_in_queue_information[1].substring(7, 9); // Grab the events destination floor
 
-            // switch(elevator_destination){
-            //     case 1:
+        // switch(elevator_destination){
+        //     case 1:
 
-            // }
-            var destination = $('#elevator-destination-f2').offset();
-            $("#elevator").offset(destination);
-            //$("#elevator").animate( {right: temp.left, bottom: temp.top}, 4000, "linear", function(){console.log("Elevator finished moving")} );
-
+        // }
+        let destination = $('#second-floor').offset();
+        $('#elevator').animate(
+            {
+                destination
+            },
+            200
+        );
+        //$("#elevator").animate( {right: temp.left, bottom: temp.top}, 4000, "linear", function(){console.log("Elevator finished moving")} );
 
         //});
     });
@@ -181,19 +184,21 @@ $(document).ready(function() {
     $('#btn-reset').click(function() {
         // Loop through floor button and enable them
         floor_btns.forEach(btn => {
-            btn.classList.remove("e-btn-simulate");
+            btn.classList.remove('e-btn-simulate');
         });
 
         // Disable Reset button
-        resetBtn.classList.toggle("btn-reset");
-        resetBtn.classList.remove("btn-start");
+        resetBtn.classList.toggle('btn-reset');
+        resetBtn.classList.remove('btn-start');
 
         // Enable Start button
-        startBtn.classList.toggle("btn-start");
-        startBtn.classList.remove("btn-reset");
+        startBtn.classList.toggle('btn-start');
+        startBtn.classList.remove('btn-reset');
 
         // Clear the queue
-        queue_list.querySelectorAll(".queue-list-item").forEach(event => event.remove());
+        queue_list
+            .querySelectorAll('.queue-list-item')
+            .forEach(event => event.remove());
 
         //Reset Elevator to bottom floor
         //TODO
