@@ -88,6 +88,7 @@ $(document).ready(function() {
             default:
                 console.log('This should never be seen');
         }
+        moveElevator(1);
     });
 
     // Called when user selects the Floor 2 button
@@ -105,6 +106,7 @@ $(document).ready(function() {
                 `<p id="f2_f1_inQueue" class="queue-list-item">From: F2 - Dest: F1 - Riders: ${riders_f2_f1} </p>`
             );
         }
+        moveElevator(2);
     });
 
     // Called when user selects the Floor 3 button
@@ -122,6 +124,7 @@ $(document).ready(function() {
                 `<p id="f3_f1_inQueue" class="queue-list-item">From: F3 - Dest: F1 - Riders: ${riders_f3_f1} </p>`
             );
         }
+        moveElevator(3);
     });
 
     // Called when user selects the Floor 4 button
@@ -139,6 +142,7 @@ $(document).ready(function() {
                 `<p id="f4_f1_inQueue" class="queue-list-item">From: F4 - Dest: F1 - Riders: ${riders_f4_f1} </p>`
             );
         }
+        moveElevator(4);
     });
 
     // Called when user selects the Start button
@@ -162,10 +166,13 @@ $(document).ready(function() {
         first_in_queue.classList.toggle('in-progress'); // Update UI to show user that the event is in progress
 
         let first_in_queue_information = first_in_queue.innerHTML.split('-'); // Parse for needed information
-        elevator_destination = first_in_queue_information[1].substring(7, 9); // Grab the events destination floor
+        let elevator_destination = first_in_queue_information[1].substring(
+            7,
+            9
+        ); // Grab the events destination floor
+        let elevator_from = first_in_queue_information[0].substring(6, 8); // Grab the events origin floor
 
         let destination = $('#forth-floor').position();
-        $("#elevator").animate( {top: destination.top}, 4000, "linear", function(){console.log("Elevator finished moving")} );
 
         //});
     });
@@ -191,6 +198,102 @@ $(document).ready(function() {
             .forEach(event => event.remove());
 
         //Reset Elevator to bottom floor
-        //TODO
+        moveElevator(1);
     });
 });
+
+function moveElevator(next_floor) {
+    let windowSize = window.innerWidth;
+
+    if (windowSize < 500) {
+        switch (next_floor) {
+            case 1:
+                document.getElementById('elevator').style.bottom = '13%';
+                break;
+            case 2:
+                document.getElementById('elevator').style.bottom = '37%';
+                break;
+            case 3:
+                document.getElementById('elevator').style.bottom = '62%';
+                break;
+            case 4:
+                document.getElementById('elevator').style.bottom = '84%';
+                break;
+            default:
+                console.log('You should never see this');
+        }
+    } else if (windowSize > 499 && windowSize < 750) {
+        switch (next_floor) {
+            case 1:
+                document.getElementById('elevator').style.bottom = '11%';
+                break;
+            case 2:
+                document.getElementById('elevator').style.bottom = '34%';
+                break;
+            case 3:
+                document.getElementById('elevator').style.bottom = '58%';
+                break;
+            case 4:
+                document.getElementById('elevator').style.bottom = '80%';
+                break;
+            default:
+                console.log('You should never see this');
+        }
+    } else if (windowSize > 750 && windowSize < 1000) {
+        switch (next_floor) {
+            case 1:
+                document.getElementById('elevator').style.bottom = '13%';
+                break;
+            case 2:
+                document.getElementById('elevator').style.bottom = '34%';
+                break;
+            case 3:
+                document.getElementById('elevator').style.bottom = '55%';
+                break;
+            case 4:
+                document.getElementById('elevator').style.bottom = '79%';
+                break;
+            default:
+                console.log('You should never see this');
+        }
+    }
+    else if (windowSize > 999 && windowSize < 1500) {
+        switch (next_floor) {
+            case 1:
+                document.getElementById('elevator').style.bottom = '15%';
+                break;
+            case 2:
+                document.getElementById('elevator').style.bottom = '36%';
+                break;
+            case 3:
+                document.getElementById('elevator').style.bottom = '55%';
+                break;
+            case 4:
+                document.getElementById('elevator').style.bottom = '76%';
+                break;
+            default:
+                console.log('You should never see this');
+        }
+    }
+    else if (windowSize > 1499) {
+        switch (next_floor) {
+            case 1:
+                document.getElementById('elevator').style.bottom = '20%';
+                break;
+            case 2:
+                document.getElementById('elevator').style.bottom = '40.5%';
+                break;
+            case 3:
+                document.getElementById('elevator').style.bottom = '61%';
+                break;
+            case 4:
+                document.getElementById('elevator').style.bottom = '81.5%';
+                break;
+            default:
+                console.log('You should never see this');
+        }
+    }
+    else{
+        console.log('You should never see this');
+    }
+}

@@ -150,6 +150,7 @@ li::before {
     margin-left: 8vw;
     max-width: 12vw;
     bottom: 15vw;
+    transition-duration: 2s;
 }
 
 .floor {
