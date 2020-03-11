@@ -279,7 +279,7 @@ function moveElevator(next_floor) { // This funciton is used to move the elevato
     }
 }
 
-async function startSimulation(queue_list, transition) {    // A beautiful asynchronous recursive function
+async function startSimulation(queue_list, transition) {
     if (queue_list.firstElementChild) { // If we have events in queue
         let first_in_queue = queue_list.firstElementChild; // Grab first event in queue
         first_in_queue.classList.toggle('in-progress'); // Update UI to show user that the event is in progress
@@ -290,16 +290,16 @@ async function startSimulation(queue_list, transition) {    // A beautiful async
         ); // Grab the events destination floor
         let elevator_from = Number(first_in_queue_information[0].charAt(7)); // Grab the events origin floor
 
-        moveElevator(elevator_from);
+        moveElevator(elevator_from);    // Go to get passengers waiting
 
-        sleep(2000)
+        sleep(2000) // Call sleep in order to give the CSS transition enough time to complete
             .then(() => {
-                moveElevator(elevator_destination);
+                moveElevator(elevator_destination); // Drop passenger off
             })
             .then(() => {
                 sleep(2000).then(() => {
-                    first_in_queue.remove();
-                    startSimulation(queue_list, transition);
+                    first_in_queue.remove();    // Delete the completed event from queue
+                    startSimulation(queue_list, transition);    // Recursive call to get the next event in the queue
                 });
             });
     } else {    // No events left in queue
