@@ -203,9 +203,13 @@ li::before {
     font-size: 0.68rem;
 }
 
-/* Following class used to update queue-list-items in order to provide better user experience */
+/* Following 2 classes used to update queue-list-items in order to provide better user experience */
 .in-progress {
-    color: #f9b24f !important;
+    color: #f9b24f;
+}
+
+.complete {
+    color: #47ca40;
 }
 
 /* Pannel buttons Styles */
