@@ -13,10 +13,14 @@ $(document).ready(function() {
     let riders_f3_f1 = 0;
     let riders_f4_f1 = 0;
 
+    let current_floor = 0;
+
     let startBtn = document.getElementById('btn-start');
     let resetBtn = document.getElementById('btn-reset');
 
     const floor_btns = document.querySelectorAll('.e-btn');
+
+    const transition = document.getElementById('elevator'); // Used to react to elevator finishing an animation
 
     // Called when user selects the Menu change button
     $('.btn').click(function() {
@@ -156,19 +160,7 @@ $(document).ready(function() {
         startBtn.classList.toggle('btn-reset');
         startBtn.classList.remove('btn-start');
 
-        // Start the Simulation
-        let first_in_queue = queue_list.firstElementChild; // Grab first event in queue
-        first_in_queue.classList.toggle('in-progress'); // Update UI to show user that the event is in progress
-
-        let first_in_queue_information = first_in_queue.innerHTML.split('-'); // Parse for needed information
-        let elevator_destination = Number(
-            first_in_queue_information[1].charAt(8)
-        ); // Grab the events destination floor
-        let elevator_from = Number(first_in_queue_information[0].charAt(7)); // Grab the events origin floor
-
-        moveElevator(elevator_from);
-        sleep(200);
-        moveElevator(elevator_destination);
+        startSimulation(queue_list, transition);
     });
 
     // Called when user selects the Reset button
@@ -192,6 +184,7 @@ $(document).ready(function() {
             .forEach(event => event.remove());
 
         //Reset Elevator to bottom floor
+        transition.removeEventListener('transitionend', arguments.callee);
         moveElevator(1);
     });
 });
@@ -237,19 +230,15 @@ function moveElevator(next_floor) {
         switch (next_floor) {
             case 1:
                 document.getElementById('elevator').style.bottom = '13%';
-                console.log('floor 1');
                 break;
             case 2:
                 document.getElementById('elevator').style.bottom = '34%';
-                console.log('floor 2');
                 break;
             case 3:
                 document.getElementById('elevator').style.bottom = '55%';
-                console.log('floor 3');
                 break;
             case 4:
                 document.getElementById('elevator').style.bottom = '79%';
-                console.log('floor 4');
                 break;
             default:
                 console.log('You should never see this');
@@ -293,8 +282,35 @@ function moveElevator(next_floor) {
     }
 }
 
-function sleep(miliseconds) {
-    var currentTime = new Date().getTime();
+async function startSimulation(queue_list, transition) {
+    if (queue_list.firstElementChild) {
+        let first_in_queue = queue_list.firstElementChild; // Grab first event in queue
+        first_in_queue.classList.toggle('in-progress'); // Update UI to show user that the event is in progress
 
-    while (currentTime + miliseconds >= new Date().getTime()) {}
+        let first_in_queue_information = first_in_queue.innerHTML.split('-'); // Parse for needed information
+        let elevator_destination = Number(
+            first_in_queue_information[1].charAt(8)
+        ); // Grab the events destination floor
+        let elevator_from = Number(first_in_queue_information[0].charAt(7)); // Grab the events origin floor
+
+        moveElevator(elevator_from);
+
+        sleep(2000)
+            .then(() => {
+                moveElevator(elevator_destination);
+                console.log('sleep 1');
+            })
+            .then(() => {
+                sleep(2000).then(() => {
+                    first_in_queue.remove();
+                    console.log('sleep 2');
+                    startSimulation(queue_list, transition);
+                });
+            });
+    } else {
+    }
+}
+
+function sleep(time) {
+    return new Promise(resolve => setTimeout(resolve, time));
 }
