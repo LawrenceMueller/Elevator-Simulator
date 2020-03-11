@@ -18,6 +18,8 @@ $(document).ready(function() {
 
     const floor_btns = document.querySelectorAll('.e-btn');
 
+    const transition = document.getElementById("elevator");
+
     // Called when user selects the Menu change button
     $('.btn').click(function() {
         button_menu.classList.toggle('active-btn');
@@ -156,19 +158,7 @@ $(document).ready(function() {
         startBtn.classList.toggle('btn-reset');
         startBtn.classList.remove('btn-start');
 
-        // Start the Simulation
-        let first_in_queue = queue_list.firstElementChild; // Grab first event in queue
-        first_in_queue.classList.toggle('in-progress'); // Update UI to show user that the event is in progress
-
-        let first_in_queue_information = first_in_queue.innerHTML.split('-'); // Parse for needed information
-        let elevator_destination = Number(
-            first_in_queue_information[1].charAt(8)
-        ); // Grab the events destination floor
-        let elevator_from = Number(first_in_queue_information[0].charAt(7)); // Grab the events origin floor
-
-        moveElevator(elevator_from);
-        sleep(200);
-        moveElevator(elevator_destination);
+        startSimulation(queue_list, transition);
     });
 
     // Called when user selects the Reset button
@@ -237,19 +227,15 @@ function moveElevator(next_floor) { // This funciton is used to move the elevato
         switch (next_floor) {
             case 1:
                 document.getElementById('elevator').style.bottom = '13%';
-                console.log('floor 1');
                 break;
             case 2:
                 document.getElementById('elevator').style.bottom = '34%';
-                console.log('floor 2');
                 break;
             case 3:
                 document.getElementById('elevator').style.bottom = '55%';
-                console.log('floor 3');
                 break;
             case 4:
                 document.getElementById('elevator').style.bottom = '79%';
-                console.log('floor 4');
                 break;
             default:
                 console.log('You should never see this');
