@@ -164,7 +164,7 @@ $(document).ready(function() {
         let first_in_queue_information = first_in_queue.innerHTML.split('-'); // Parse for needed information
         elevator_destination = first_in_queue_information[1].substring(7, 9); // Grab the events destination floor
 
-        let destination = $('#forth-floor').offset();
+        let destination = $('#forth-floor').position();
         $("#elevator").animate( {top: destination.top}, 4000, "linear", function(){console.log("Elevator finished moving")} );
 
         //});

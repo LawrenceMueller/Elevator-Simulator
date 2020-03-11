@@ -9,7 +9,7 @@ body {
     font-family: 'Roboto', sans-serif;
     box-sizing: border-box;
     background-color: #ffffff;
-    overflow: hidden; /* Hide scrollbars */
+    /*overflow: hidden; /* Hide scrollbars */
 }
 
 /* Header Styles */
@@ -141,34 +141,23 @@ li::before {
 /* Elevator Visual Styles */
 .elevator-visual {
     width: 55%;
+    position: relative;
+    max-height: 120vw;
 }
 
 .elevator {
     position: absolute;
-    max-width: 10vw;
-    margin-left: 6vw;
+    margin-left: 8vw;
+    max-width: 12vw;
+    bottom: 15vw;
 }
 
-.floor{
-    position: relative;
-}
-
-.hidden-destination{
-    position: absolute;
-    bottom: 10vw;
-    left: 11vw;
-    background: none;
-    height: 5px;
-    width: 5px;
+.floor {
+    height: 30vw; /* height of elevator + text + line */
 }
 
 .floor-bound {
     width: 75%;
-    margin-bottom: 15vw;
-}
-
-#first-floor, #second-floor{
-    margin-bottom: 0;
 }
 
 .floor-title {
@@ -187,6 +176,7 @@ li::before {
 .queue {
     width: 44%;
     margin-top: 7vw;
+    max-height: 90vw;
 }
 
 .queue-title {
@@ -199,7 +189,7 @@ li::before {
 .queue-list {
     border-style: solid;
     border-width: 1px;
-    height: 70vw;
+    height: 90vw;
     text-align: center;
 }
 
@@ -209,7 +199,7 @@ li::before {
     color: #777;
     margin-right: 1vw;
     margin-left: 1vw;
-    font-size: .65rem;
+    font-size: 0.68rem;
 }
 
 /* Following 2 classes used to update queue-list-items in order to provide better user experience */
@@ -225,12 +215,11 @@ li::before {
 .button-panel {
     width: 100%;
     text-align: center;
-    margin-top: 5vw;
-    margin-bottom: 50px;
+    margin-bottom: 25px;
 }
 
 .e-btn {
-    position: static;
+    position: relative;
     border: none;
     padding: 8px 19.5px;
     vertical-align: middle;
@@ -240,9 +229,10 @@ li::before {
     font-size: 24px;
     background-color: #f9b24f;
     color: white;
+    z-index: 99;
 }
 
-.e-btn-simulate{
+.e-btn-simulate {
     position: static;
     border: none;
     padding: 8px 19.5px;
@@ -256,8 +246,8 @@ li::before {
     color: white;
 }
 
-.btn-start{
-    position: static;
+.btn-start {
+    position: relative;
     border: none;
     padding: 8px 21px;
     vertical-align: middle;
@@ -269,9 +259,10 @@ li::before {
     color: white;
     margin-left: 15px;
     margin-top: 10px;
+    z-index: 99;
 }
 
-.btn-reset{
+.btn-reset {
     position: static;
     border: none;
     padding: 8px 21px;
@@ -297,107 +288,143 @@ li::before {
         font-size: 1.5rem;
     }
 
-    .visuals {
-        margin-top: 5vw;
-    }
-
-    .queue-list {
-        height: 77vw;
-    }
-
     .queue-list-item {
         font-size: 0.6rem;
     }
 }
 
 @media only screen and (min-width: 500px) {
-    .queue-list {
-        text-align: left;
+    .elevator-visual {
+        max-height: 85vw;
+    }
+    
+    .elevator {
+        max-width: 8vw;
+        bottom: 10vw;
+    }
+    
+    .floor {
+        height: 20vw; /* height of elevator + text + line */
+    }
+
+    .queue {
+        max-height: 73vw;
     }
 
     .queue-list {
-        height: 65vw;
+        text-align: left;
+        height: 63vw;
     }
 
     .queue-list-item {
-        font-size: .95rem;
+        font-size: 0.95rem;
     }
 }
 
 @media only screen and (min-width: 800px) {
     .elevator-visual {
-        width: 50%;
+        max-height: 71vw;
     }
-
+    
     .elevator {
-        max-width: 7vw;
+        max-width: 8vw;
+        bottom: 10vw;
+    }
+    
+    .floor {
+        height: 15vw; /* height of elevator + text + line */
     }
 
-    .floor-bound {
-        margin-bottom: 10vw;
-    }
-
-    #floor-four-lable {
-        margin-top: 10vw;
-    }
-
-    .hidden-destination{
-        bottom: 7vw;
-        left: 9.5vw;
-    }
-
-    /* Queue Styles */
     .queue {
+        max-height: 60vw;
         width: 35%;
         margin-top: 3.5vw;
     }
 
     .queue-list {
-        height: 43vw;
+        text-align: left;
+        height: 52vw;
     }
 
     .queue-list-item {
         margin: 10px 0;
         margin-left: 2vw;
+        font-size: 1.15rem;
     }
 }
 
 @media only screen and (min-width: 1000px) {
+    .elevator-visual {
+        width: 35%;
+        margin-left: 15%;
+        max-height: 45vw;
+    }
 
-  .elevator-visual {
-      width: 40%;
-      margin-left: 8vw;
-  }
+    .elevator {
+        max-width: 4.5vw;
+        bottom: 7.5vw;
+    }
 
-  .elevator {
-      max-width: 6vw;
-  }
+    .floor {
+        height: 9vw; /* height of elevator + text + line */
+    }
 
-  .floor-bound {
-      margin-bottom: 7vw;
-  }
+    #floor-four-lable {
+        margin-top: 9.5vw;
+    }
 
-  #floor-four-lable {
-      margin-top: 6vw;
-  }
+    .queue {
+        max-height: 45vw;
+        width: 35%;
+        margin-top: 3.5vw;
+    }
 
-  .hidden-destination{
-    bottom: 4.5vw;
-    left: 9vw;
+    .queue-list {
+        text-align: left;
+        height: 28vw;
+    }
+
+    .queue-list-item {
+        margin: 10px 0;
+        margin-left: 2vw;
+        font-size: 1.4rem;
+    }
 }
 
-  /* Queue Styles */
-  .queue {
-      margin-top: .3vw;
-  }
+@media only screen and (min-width: 1500px) {
+    .elevator-visual {
+        width: 35%;
+        margin-left: 15%;
+        max-height: 45vw;
+    }
 
-  .queue-list {
-      height: 28.5vw;
-  }
+    .elevator {
+        max-width: 4vw;
+        bottom: 7.5vw;
+    }
 
-  .queue-list-item {
-      margin: 10px 0;
-      margin-left: 2vw;
-      font-size: 1.4rem;
-  }
+    .floor {
+        height: 8vw; /* height of elevator + text + line */
+    }
+
+    #floor-four-lable {
+        margin-top: 6vw;
+    }
+
+    .queue {
+        max-height: 45vw;
+        width: 30%;
+        margin-top: 0;
+    }
+
+    .queue-list {
+        text-align: left;
+        height: 28vw;
+    }
+
+    .queue-list-item {
+        margin: 10px 0;
+        margin-left: 2vw;
+        font-size: 1.8rem;
+    }
 }
