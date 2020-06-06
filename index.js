@@ -6,10 +6,10 @@ $(document).ready(function() {
     const mainContent = document.querySelector('.main-content');
     const queue_list = document.querySelector('.queue-list');
 
-    let riders_f1_f2 = 0; // Represents all riders waiting for the elevator at floor 1 going to floor 2
+    let riders_f1_f2 = 0; // Represents all riders waiting for the elevator at a floor and going to a destination
     let riders_f1_f3 = 0;
     let riders_f1_f4 = 0;
-    let riders_f2_f1 = 0; // Represents all riders waiting for the elevator at floor 2 going to floor 1
+    let riders_f2_f1 = 0;
     let riders_f3_f1 = 0;
     let riders_f4_f1 = 0;
 
@@ -188,6 +188,7 @@ $(document).ready(function() {
 
 function moveElevator(next_floor) { // This funciton is used to move the elevator
     let windowSize = window.innerWidth; // Find devices view port size for make shift media queries
+    
     // Every if statment below just uses a switch to change elevator movements dependent on device size
     if (windowSize < 500) {
         switch (next_floor) {
